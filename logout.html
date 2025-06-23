@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging Out...</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>กำลังออกจากระบบ...</h2>
+    <p>กรุณารอสักครู่</p>
+
+    <script>
+        // URL ของหน้า Login บน Google Apps Script ของคุณ
+        // ✨ สำคัญ: ให้เอา URL ใหม่ล่าสุดที่ได้จากการ Deploy มาใส่ที่นี่ ✨
+        const gasLoginUrl = "<?= ScriptApp.getService().getUrl() ?>?page=login";
+
+        // 1. ลบข้อมูล sessionStorage ของเว็บ github.io
+        sessionStorage.clear(); // ใช้ clear() เพื่อล้างทั้งหมดเลยก็ได้ ปลอดภัยดี
+        console.log("Session storage for github.io has been cleared.");
+
+        // 2. หลังจากลบเสร็จ ก็ redirect ไปยังหน้า Login ที่แท้จริง
+        window.location.href = gasLoginUrl;
+    </script>
+</body>
+</html>
